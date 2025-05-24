@@ -1,0 +1,8 @@
+<div class="navigation">
+  <button class="previous" [disabled]="!previousPage()" (click)="goToPreviousPage()">Previous</button>
+  <input
+    [value]="currentPage()"
+    (keyup.enter)="goToPage($event)"
+    (focusout)="goToPage($event)"/>
+  <button class="next" [disabled]="!nextPage()" (click)="goToNextPage()">Next</button>
+</div>

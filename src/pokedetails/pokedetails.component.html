@@ -1,0 +1,48 @@
+<div *ngIf="pokemon">
+  <hr>
+  <h1>#{{ pokemon.id | pokeId }} - {{ pokemon.name | titlecase }} </h1>
+  <div style="display: flex">
+    <div style="flex: 1; padding: 10px">
+      <img style="width: 300px; height: auto" src="{{ pokemon.spriteUrl }}"/>
+    </div>
+    <div style="flex: 1; padding: 10px">
+      <h2>Type</h2>
+      <ul>
+        @for (type of pokemon.types; track type) {
+          <li>{{ type | titlecase }}</li>
+        }
+      </ul>
+      <hr>
+      <h2>Abilities</h2>
+      <ul>
+        @for (ability of pokemon.abilities; track ability.name) {
+          <li [style]="ability.is_hidden ? 'color:gray' : 'color:black'">
+            {{ ability.name | removeHyphens | titlecase }}
+            @if (ability.is_hidden) {
+              (hidden)
+            }
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+  <h2>Evolves to</h2>
+
+  <div *ngIf="(pokemon.evolutions?.length ?? 0) > 0; else elseBlock">
+    <table>
+      @for (evolution of pokemon.evolutions; track evolution.id) {
+        <a routerLink="/pokemons/{{evolution.name}}">
+          <tr>
+            <td><img style="width: 100px; height: auto;" src="{{ evolution.spriteUrl }}" alt="{{evolution.name}}"/></td>
+            <td style="align-content: center">{{ evolution.name | titlecase }}</td>
+          </tr>
+        </a>
+      }
+    </table>
+  </div>
+  <ng-template #elseBlock>(This pokemon has no evolutions)</ng-template>
+
+</div>
+

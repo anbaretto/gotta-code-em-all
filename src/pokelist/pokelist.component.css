@@ -1,0 +1,30 @@
+
+.poke-list-container {
+}
+
+.poke-list-container table {
+  margin: auto;
+  width: 50%;
+}
+
+.poke-list-container tr {
+  display: flex;
+  justify-content: center;
+}
+
+.poke-list-container td {
+  align-content: center;
+  text-align: center;
+  width: 33%;
+}
+
+.poke-list-container img {
+  width: 100px;
+  height: auto;
+}
+
+.poke-name-container {
+  align-content: center;
+  text-align: center;
+  width: 33%;
+}

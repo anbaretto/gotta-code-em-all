@@ -1,0 +1,17 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation button {
+  flex: 1;
+  max-width: 100px;
+  padding: 5px;
+  margin-right: 20px
+}
+
+.navigation input {
+  width: 40px;
+  padding: 5px;
+  text-align: center;
+}

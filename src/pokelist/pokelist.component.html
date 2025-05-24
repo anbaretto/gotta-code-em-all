@@ -1,0 +1,29 @@
+﻿<div>
+  <pokelist-navigation [currentPage]="pageIndex"/>
+  <hr>
+  <div class="poke-list-container" *ngIf="!isLoading; else elseBlock">
+    <table>
+      @for (pokemon of pokemons; track pokemon.id) {
+        <tr>
+          <td>
+            #{{ pokemon.id | pokeId }}
+          </td>
+          <td>
+            <a routerLink="/pokemons/{{pokemon.name}}">
+              <img src="{{ pokemon.spriteUrl }}" alt="{{pokemon.name}}"/>
+            </a>
+          </td>
+          <td class="poke-name-container">
+            <a routerLink="/pokemons/{{pokemon.name}}">{{ pokemon.name | titlecase }}</a>
+          </td>
+        </tr>
+      }
+    </table>
+  </div>
+
+  <ng-template #elseBlock>
+    <div style="text-align: center; margin: auto;">Loading...</div>
+  </ng-template>
+  <hr>
+  <pokelist-navigation *ngIf="!isLoading" [currentPage]="pageIndex"/>
+</div>
